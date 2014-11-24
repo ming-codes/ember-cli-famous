@@ -25,3 +25,10 @@ a usable state.
 * `ember build`
 
 For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+
+## Development Resources
+
+Sources we're referencing when developing
+
+* [s4dc/hafem](https://github.com/s4dc/hafem)
+* [Famous/famous-angular](https://github.com/Famous/famous-angula://github.com/Famous/famous-angular)
