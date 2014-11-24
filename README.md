@@ -1,6 +1,8 @@
 # Ember-cli-famous
 
-This README outlines the details of collaborating on this Ember addon.
+We are just beginning development of this so it's not near usable yet. Consider
+this entirely experimental. We'll start releasing versions once we get it into
+a usable state.
 
 ## Installation
 
