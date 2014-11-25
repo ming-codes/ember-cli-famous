@@ -3,26 +3,28 @@
 {{input value=text}}
 
 {{#fa-app}}
-  {{#fa-surface options=surfaceOptions}}
-    {{#fa-template bindCtx=controller dependentKeys=controller.dependentKeys}}
-      <h1>{{text}}</h1>
+  {{#fa-modifier options=modifierOptions}}
+    {{#fa-surface options=surfaceOptions}}
+      {{#fa-template bindCtx=controller dependentKeys=controller.dependentKeys}}
+        <h1>{{text}}</h1>
 
-      <ul>
-        {{#each color in colors}}
-          <li>
-            {{color}}
-            <button {{action 'deleteColor' color}}>
-              delete
-            </button>
-          </li>
-        {{else}}
-          <li>
-            No colors anymore. <button {{action 'resetColors'}}>reset</button>
-          </li>
-        {{/each}}
-      </ul>
-    {{/fa-template}}
-  {{/fa-surface}}
+        <ul>
+          {{#each color in colors}}
+            <li>
+              {{color}}
+              <button {{action 'deleteColor' color}}>
+                delete
+              </button>
+            </li>
+          {{else}}
+            <li>
+              No colors anymore. <button {{action 'resetColors'}}>reset</button>
+            </li>
+          {{/each}}
+        </ul>
+      {{/fa-template}}
+    {{/fa-surface}}
+  {{/fa-modifier}}
 {{/fa-app}}
 
 {{outlet}}

@@ -2,7 +2,13 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   dependentKeys: ['text',, 'colors.[]'],
+
   text: 'I\'m a surface',
+
+  modifierOptions: {
+    opacity: 0.5
+  },
+
   surfaceOptions: {
     size: [200, 200],
     properties: {
