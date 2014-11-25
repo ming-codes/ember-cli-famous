@@ -49,6 +49,10 @@ export default Ember.Component.extend({
     });
   },
 
+  famousDidLoad: function() {
+    this.triggerFamousDidLoad();
+  },
+
   listenForBoundPropertyChanges: function() {
     this.scheduleFamousRerender();
   }.on('famousBoundPropertyDidChange'),
