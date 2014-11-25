@@ -1,8 +1,10 @@
 import Ember from 'ember';
 import View from 'famous/core/View';
+import faPropertyWatcher from 'ember-cli-famous/utils/property-watcher';
 
 export default Ember.Controller.extend({
   text: 'Hey',
+  watcher: faPropertyWatcher(['text']),
   options: {
     size: [200, 200],
     properties: {

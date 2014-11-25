@@ -1,19 +1,23 @@
 import Ember from 'ember';
 import Engine from 'famous/core/Engine';
 import Surface from 'famous/core/Surface';
+import FamousComponent from './famous';
 
 var get = Ember.get;
 
-export default Ember.Component.extend({
-  ctx: Ember.computed.alias('parentView.ctx'),
-
+export default FamousComponent.extend({
   renderSurface: function() {
-    var html = this.$().html();
-    var surface = new Surface(Ember.merge({
-      content: html
-    }, this.get('options')));
+    var options = Ember.merge({
+      content: this.$().html()
+    }, this.get('options'));
 
-    this.$().html('');
-    this.get('ctx').add(surface)
-  }.on('didInsertElement')
+    var surface = new Surface(options);
+
+    this.set('surface', surface);
+    this.get('ctx').add(surface);
+  }.on('famousDidLoad'),
+
+  famousRerender: function() {
+    this.get('surface').setContent(this.$().html());
+  }
 });
