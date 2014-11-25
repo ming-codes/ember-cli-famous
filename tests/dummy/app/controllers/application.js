@@ -21,6 +21,14 @@ export default Ember.Controller.extend({
     }
   },
 
+  surface2Options: {
+    size: [75, 75],
+    properties: {
+      backgroundColor: 'red',
+      marginTop: '5px'
+    }
+  },
+
   colors: [
     'green', 'red'
   ],
