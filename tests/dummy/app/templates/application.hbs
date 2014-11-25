@@ -4,7 +4,16 @@
 
 {{#fa-app}}
   {{#fa-surface options=options}}
-    <h1>{{fa-bind value=text}}</h1>
+    {{#fa-template bindCtx=controller dependentKeys=controller.dependentKeys}}
+      <h1>{{text}}</h1>
+      <ul>
+        {{#each color in colors}}
+          <li>
+            {{color}}
+          </li>
+        {{/each}}
+      </ul>
+    {{/fa-template}}
   {{/fa-surface}}
 {{/fa-app}}
 

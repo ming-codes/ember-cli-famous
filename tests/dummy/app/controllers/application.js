@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  dependentKeys: ['text',, 'colors.[]'],
   text: 'I\'m a surface',
   options: {
     size: [200, 200],
@@ -12,5 +13,8 @@ export default Ember.Controller.extend({
       marginTop: '10px',
       marginLeft: '0px'
     }
-  }
+  },
+  colors: [
+    'green', 'red'
+  ]
 });
