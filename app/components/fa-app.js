@@ -9,6 +9,6 @@ export default FamousComponent.extend({
     var ctx = Engine.createContext(this.$()[0]);
     this.set('ctx', ctx);
 
-    this.triggerFamousDidLoad();
+    this.triggerFamousDidLoad(this.get('childViews'));
   })
 })

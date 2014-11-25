@@ -25,18 +25,16 @@ export default Ember.Component.extend({
     throw new Error('You must implement the famousRerender method when passing in the watcher property.');
   },
 
-  triggerFamousDidLoad: function() {
-    Ember.A(this.get('childViews')).forEach(function(view) {
-      if (view.famousDidLoad) {
-        view.famousDidLoad();
-      }
-
+  triggerFamousDidLoad: function(childViews) {
+    Ember.A(childViews).forEach(function(view) {
       view.trigger('famousDidLoad');
-    });
-  },
 
-  famousDidLoad: function() {
-    this.triggerFamousDidLoad();
+      var childViews = Ember.A(view.get('childViews'));
+
+      if (childViews && childViews.get('length')) {
+        this.triggerFamousDidLoad(childViews);
+      }
+    }, this);
   },
 
   scheduleFamousRerender: Ember.on('famousBoundPropertyDidChange', function() {
