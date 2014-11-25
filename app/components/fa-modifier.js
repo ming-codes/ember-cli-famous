@@ -10,6 +10,6 @@ export default FamousComponent.extend({
 
     var modifier = new Modifier(this.get('options'));
 
-    this.set('ctx', this.get('ctx').add(modifier));
+    this.set('mainContext', this.get('mainContext').add(modifier));
   })
 });

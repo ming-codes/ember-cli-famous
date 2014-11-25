@@ -1,27 +1,27 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  ctx: Ember.computed('parentView.ctx', function() {
-    function tryParentCtx(parent) {
-      var parentCtx = parent.get('ctx')
+  mainContext: Ember.computed('parentView.mainContext', function() {
+    function tryParentContext(parent) {
+      var parentContext = parent.get('mainContext')
 
-      if (parentCtx) {
-        return parentCtx;
+      if (parentContext) {
+        return parentContext;
       }
 
       var parentsParent = parent.get('parentView');
 
       if (parentsParent) {
-        return tryParentCtx(parentsParent);
+        return tryParentContext(parentsParent);
       }
 
       throw new Error('Could not find parent context to return. Are you within an #fa-app component?');
     }
 
-    return tryParentCtx(this.get('parentView'));
+    return tryParentContext(this.get('parentView'));
   }),
 
-  famousRerender: function(/* dataCtx, path */) {
+  famousRerender: function() {
     throw new Error('You must implement the famousRerender method when passing in the watcher property.');
   },
 
