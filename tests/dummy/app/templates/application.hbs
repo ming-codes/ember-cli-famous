@@ -3,13 +3,21 @@
 {{input value=text}}
 
 {{#fa-app}}
-  {{#fa-surface options=options}}
+  {{#fa-surface options=surfaceOptions}}
     {{#fa-template bindCtx=controller dependentKeys=controller.dependentKeys}}
       <h1>{{text}}</h1>
+
       <ul>
         {{#each color in colors}}
           <li>
             {{color}}
+            <button {{action 'deleteColor' color}}>
+              delete
+            </button>
+          </li>
+        {{else}}
+          <li>
+            No colors anymore. <button {{action 'resetColors'}}>reset</button>
           </li>
         {{/each}}
       </ul>
