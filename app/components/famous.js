@@ -31,9 +31,7 @@ export default Ember.Component.extend({
     }
 
     watcher.props.forEach(function(prop) {
-      Ember.addObserver(watcher.ctx, prop, this, function() {
-        Ember.run.scheduleOnce('afterRender', this, this.famousRerender);
-      });
+      Ember.addObserver(watcher.ctx, prop, this, this.scheduleFamousRerender);
     }, this);
   }.on('didInsertElement'),
 
@@ -49,5 +47,13 @@ export default Ember.Component.extend({
 
       view.trigger('famousDidLoad');
     });
+  },
+
+  listenForBoundPropertyChanges: function() {
+    this.scheduleFamousRerender();
+  }.on('famousBoundPropertyDidChange'),
+
+  scheduleFamousRerender: function() {
+    Ember.run.scheduleOnce('afterRender', this, this.famousRerender);
   }
 });

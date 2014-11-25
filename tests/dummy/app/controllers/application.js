@@ -1,10 +1,7 @@
 import Ember from 'ember';
-import View from 'famous/core/View';
-import faPropertyWatcher from 'ember-cli-famous/utils/property-watcher';
 
 export default Ember.Controller.extend({
-  text: 'Hey',
-  watcher: faPropertyWatcher(['text']),
+  text: 'I\'m a surface',
   options: {
     size: [200, 200],
     properties: {
@@ -12,8 +9,8 @@ export default Ember.Controller.extend({
       textAlign: 'center',
       padding: '5px',
       border: '2px solid rgb(210, 208, 203)',
-      marginTop: '50px',
-      marginLeft: '50px'
+      marginTop: '10px',
+      marginLeft: '0px'
     }
   }
 });

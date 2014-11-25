@@ -6,6 +6,10 @@ import FamousComponent from './famous';
 var get = Ember.get;
 
 export default FamousComponent.extend({
+  hideContent: function() {
+    this.$().css('display', 'none');
+  }.on('didInsertElement'),
+
   renderSurface: function() {
     var options = Ember.merge({
       content: this.$().html()
