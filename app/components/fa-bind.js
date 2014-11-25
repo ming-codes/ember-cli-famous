@@ -4,7 +4,7 @@ import FamousComponent from './famous';
 export default Ember.Component.extend({
   tagName: '',
 
-  valueDidChange: function() {
+  valueDidChange: Ember.observer('value', function() {
     this.get('parentView').trigger('famousBoundPropertyDidChange', this);
-  }.observes('value')
+  })
 });

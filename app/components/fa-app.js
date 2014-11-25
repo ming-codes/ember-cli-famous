@@ -5,16 +5,10 @@ import FamousComponent from './famous';
 export default FamousComponent.extend({
   ctx: null,
 
-  createEngine: function() {
+  createEngine: Ember.on('didInsertElement', function() {
     var ctx = Engine.createContext(this.$()[0]);
     this.set('ctx', ctx);
 
     this.triggerFamousDidLoad();
-  }.on('didInsertElement'),
-
-  triggerFamousDidLoad: function() {
-    this.get('childViews').forEach(function(view) {
-      view.trigger('famousDidLoad');
-    });
-  }
+  })
 })

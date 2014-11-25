@@ -1,9 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  watcher: {},
-
-  ctx: function() {
+  ctx: Ember.computed('parentView.ctx', function() {
     function tryParentCtx(parent) {
       var parentCtx = parent.get('ctx')
 
@@ -21,26 +19,14 @@ export default Ember.Component.extend({
     }
 
     return tryParentCtx(this.get('parentView'));
-  }.property('parentView.ctx'),
-
-  watchForPropChanges: function() {
-    var watcher = this.get('watcher');
-
-    if (!watcher || Ember.keys(watcher).length === 0) {
-      return;
-    }
-
-    watcher.props.forEach(function(prop) {
-      Ember.addObserver(watcher.ctx, prop, this, this.scheduleFamousRerender);
-    }, this);
-  }.on('didInsertElement'),
+  }),
 
   famousRerender: function(/* dataCtx, path */) {
     throw new Error('You must implement the famousRerender method when passing in the watcher property.');
   },
 
   triggerFamousDidLoad: function() {
-    this.get('childViews').forEach(function(view) {
+    Ember.A(this.get('childViews')).forEach(function(view) {
       if (view.famousDidLoad) {
         view.famousDidLoad();
       }
@@ -53,11 +39,7 @@ export default Ember.Component.extend({
     this.triggerFamousDidLoad();
   },
 
-  listenForBoundPropertyChanges: function() {
-    this.scheduleFamousRerender();
-  }.on('famousBoundPropertyDidChange'),
-
-  scheduleFamousRerender: function() {
+  scheduleFamousRerender: Ember.on('famousBoundPropertyDidChange', function() {
     Ember.run.scheduleOnce('afterRender', this, this.famousRerender);
-  }
+  })
 });
