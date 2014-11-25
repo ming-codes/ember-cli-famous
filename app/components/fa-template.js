@@ -8,6 +8,7 @@ export default FamousComponent.extend({
   bindCtx: Ember.Object.create(),
 
   setupObservers: Ember.on('famousDidLoad', function() {
+    Ember.debug('fa-template: setupObservers');
     Ember.A(this.get('dependentKeys')).forEach(function(key) {
       Ember.addObserver(this.get('bindCtx'), key, this, function() {
         this.get('parentView').trigger('famousBoundPropertyDidChange', this);

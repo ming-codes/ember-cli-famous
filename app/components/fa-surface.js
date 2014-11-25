@@ -8,6 +8,7 @@ export default FamousComponent.extend({
   }),
 
   renderSurface: Ember.on('famousDidLoad', function() {
+    Ember.debug('fa-surface: renderSurface');
     var options = Ember.merge({
       content: this.$().html()
     }, this.get('options'));

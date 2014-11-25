@@ -6,6 +6,7 @@ export default FamousComponent.extend({
   ctx: null,
 
   createEngine: Ember.on('didInsertElement', function() {
+    Ember.debug('fa-app: createEngine');
     var ctx = Engine.createContext(this.$()[0]);
     this.set('ctx', ctx);
 
