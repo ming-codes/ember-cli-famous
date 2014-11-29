@@ -21,6 +21,32 @@ export default Ember.Controller.extend({
     }
   },
 
+  transition: {
+    // famousTransition is not part of Famous, but we pass it to know which
+    // Famous Transition lib to use.
+    famousTransition: 'SpringTransition',
+    method: 'spring',
+    period: 1000,
+    dampingRatio: 0.3,
+    coordinates: {
+      x: 50,
+      y: 0,
+      z: 0
+    }
+  },
+
+  anotherTransition: {
+    famousTransition: 'TweenTransition',
+    method: 'tween',
+    curve: 'easeInOut',
+    duration: 800,
+    coordinates: {
+      x: 300,
+      y: -200,
+      z: 0
+    }
+  },
+
   surface2Options: {
     size: [75, 75],
     properties: {

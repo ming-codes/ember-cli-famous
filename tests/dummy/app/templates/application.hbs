@@ -4,7 +4,7 @@
 {{input value=text}}
 
 {{#fa-app}}
-  {{#fa-modifier options=modifierOptions}}
+  {{#fa-modifier options=modifierOptions transition=transition}}
     {{#fa-surface options=surfaceOptions}}
       {{#fa-template bindContext=controller dependentKeys=controller.dependentKeys}}
         <h1>{{text}}</h1>
@@ -29,9 +29,11 @@
         </ul>
       {{/fa-template}}
     {{/fa-surface}}
-    {{#fa-surface options=surface2Options}}
-      Surface2
-    {{/fa-surface}}
+    {{#fa-modifier transition=anotherTransition}}
+      {{#fa-surface options=surface2Options}}
+        Surface2
+      {{/fa-surface}}
+    {{/fa-modifier}}
   {{/fa-modifier}}
 {{/fa-app}}
 
