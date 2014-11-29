@@ -7,7 +7,7 @@ export default FamousComponent.extend({
 
   createEngine: Ember.on('didInsertElement', function() {
     Ember.debug('fa-app: createEngine');
-    var mainContext = Engine.createContext(this.$()[0]);
+    var mainContext = Engine.createContext(this.$().get(0));
     this.set('mainContext', mainContext);
 
     this.triggerFamousDidLoad(this.get('childViews'));
