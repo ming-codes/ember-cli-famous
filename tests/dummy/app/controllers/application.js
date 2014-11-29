@@ -1,4 +1,6 @@
 import Ember from 'ember';
+import SpringTransition from 'famous/transitions/SpringTransition';
+import TweenTransition from 'famous/transitions/TweenTransition';
 
 export default Ember.Controller.extend({
   dependentKeys: ['text', 'colors.[]'],
@@ -24,7 +26,7 @@ export default Ember.Controller.extend({
   transition: {
     // famousTransition is not part of Famous, but we pass it to know which
     // Famous Transition lib to use.
-    famousTransition: 'SpringTransition',
+    famousTransition: SpringTransition,
     method: 'spring',
     period: 1000,
     dampingRatio: 0.3,
@@ -36,7 +38,7 @@ export default Ember.Controller.extend({
   },
 
   anotherTransition: {
-    famousTransition: 'TweenTransition',
+    famousTransition: TweenTransition,
     method: 'tween',
     curve: 'easeInOut',
     duration: 800,

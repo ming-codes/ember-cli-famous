@@ -2,19 +2,7 @@ import Ember from 'ember';
 import Modifier from 'famous/core/Modifier';
 import FamousComponent from './famous';
 import Transform from 'famous/core/Transform';
-
-/*
- * Transitions
- */
 import Transitionable from 'famous/transitions/Transitionable';
-import CachedMap from 'famous/transitions/CachedMap';
-import Easing from 'famous/transitions/Easing';
-import MultipleTransitions from 'famous/transitions/MultipleTransition';
-import SnapTransition from 'famous/transitions/SnapTransition';
-import SpringTransition from 'famous/transitions/SpringTransition';
-import TransitionableTransform from 'famous/transitions/TransitionableTransform';
-import TweenTransition from 'famous/transitions/TweenTransition';
-import WallTransition from 'famous/transitions/WallTransition';
 
 export default FamousComponent.extend({
   options: Ember.Object.create(),
@@ -45,15 +33,13 @@ export default FamousComponent.extend({
     }
 
     if (!transition.famousTransition) {
-      var msg = 'You must defined a famousTransition property so the addon '
-      msg += 'knows which transition library to import.'
-      throw new Error(msg)
+      var msg = 'You must define a famousTransition property so the addon '
+      msg += 'knows which transition library to use.'
+      throw new Ember.Error(msg)
     }
 
     Transitionable.registerMethod(
-      transition.method,
-      // TODO: figure out a better way to do this.
-      eval(transition.famousTransition)
+      transition.method, transition.famousTransition
     );
 
     var context = this.get('mainContext');
