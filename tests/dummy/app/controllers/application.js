@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  dependentKeys: ['text',, 'colors.[]'],
+  dependentKeys: ['text', 'colors.[]'],
 
   text: 'I\'m a surface',
 
