@@ -1,5 +1,6 @@
 <h2 id='title'>Welcome to ember-cli-famous</h2>
 
+<h4>Set Title of first surface</h4>
 {{input value=text}}
 
 {{#fa-app}}
@@ -21,6 +22,10 @@
               No colors anymore. <button {{action 'resetColors'}}>reset</button>
             </li>
           {{/each}}
+
+          <h4>Add colors</h4>
+          {{input value=newColor}}
+          <button {{action 'addColor'}}>Add color</button>
         </ul>
       {{/fa-template}}
     {{/fa-surface}}

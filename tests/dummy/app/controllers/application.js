@@ -10,7 +10,7 @@ export default Ember.Controller.extend({
   },
 
   surfaceOptions: {
-    size: [200, 200],
+    size: [200, 250],
     properties: {
       backgroundColor: 'rgb(240, 238, 233)',
       textAlign: 'center',
@@ -42,6 +42,11 @@ export default Ember.Controller.extend({
       this.set('colors', [
         'green', 'red'
       ]);
+    },
+
+    addColor: function() {
+      var newColor = this.get('newColor');
+      this.get('colors').pushObject(newColor);
     }
   }
 });
