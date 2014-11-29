@@ -35,4 +35,24 @@
   {{/fa-modifier}}
 {{/fa-app}}
 
+<h3>Non surface example to compare functionality</h3>
+<div>
+  {{#each color in colors}}
+    <li>
+      {{color}}
+      <button {{action 'deleteColor' color}}>
+        delete
+      </button>
+    </li>
+  {{else}}
+    <li>
+      No colors anymore. <button {{action 'resetColors'}}>reset</button>
+    </li>
+  {{/each}}
+
+  <h4>Add colors</h4>
+  {{input value=newColor}}
+  <button {{action 'addColor'}}>Add color</button>
+</div>
+
 {{outlet}}
