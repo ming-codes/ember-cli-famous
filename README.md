@@ -26,6 +26,18 @@ a usable state.
 
 For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
 
+## Gh Pages
+
+Build new gh-pages version
+```
+ember build --environment=production
+git checkout gh-pages
+cp -R dist/* .
+git add .
+git commit
+git push
+```
+
 ## Development Resources
 
 Sources we're referencing when developing
