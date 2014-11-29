@@ -16,7 +16,7 @@ export default FamousComponent.extend({
     var surface = new Surface(options);
 
     this.set('surface', surface);
-    this.get('mainContext').add(surface);
+    this.addToMainContext(surface);
   }),
 
   famousRerender: function() {

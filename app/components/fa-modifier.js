@@ -19,7 +19,7 @@ export default FamousComponent.extend({
 
     this.addTransitionsIfAny(modifier);
 
-    this.setNewContext(modifier);
+    this.addToMainContext(modifier);
   }),
 
   addTransitionsIfAny: function() {
@@ -49,9 +49,5 @@ export default FamousComponent.extend({
     this.get('modifier').setTransform(
       Transform.translate(coords.x, coords.y, coords.z), transition
     );
-  },
-
-  setNewContext: function(modifier) {
-    this.set('mainContext', this.get('mainContext').add(modifier));
   }
 });

@@ -39,5 +39,10 @@ export default Ember.Component.extend({
 
   scheduleFamousRerender: Ember.on('famousBoundPropertyDidChange', function() {
     Ember.run.scheduleOnce('afterRender', this, this.famousRerender);
-  })
+  }),
+
+  addToMainContext: function(renderableObject) {
+    var newContext = this.get('mainContext').add(renderableObject);
+    return this.set('mainContext', newContext);
+  }
 });
