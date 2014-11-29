@@ -15,14 +15,14 @@ export default Ember.Component.extend({
         return tryParentContext(parentsParent);
       }
 
-      throw new Error('Could not find parent context to return. Are you within an #fa-app component?');
+      throw new Ember.Error('Could not find parent context to return. Are you within an #fa-app component?');
     }
 
     return tryParentContext(this.get('parentView'));
   }),
 
   famousRerender: function() {
-    throw new Error('You must implement the famousRerender method when passing in the watcher property.');
+    throw new Ember.Error('You must implement the famousRerender method when passing in the watcher property.');
   },
 
   triggerFamousDidLoad: function(childViews) {
