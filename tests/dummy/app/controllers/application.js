@@ -49,6 +49,13 @@ export default Ember.Controller.extend({
     }
   },
 
+  chainedTransitions: function() {
+    return [
+      this.get('anotherTransition'),
+      this.get('transition')
+    ];
+  }.property(),
+
   surface2Options: {
     size: [75, 75],
     properties: {
