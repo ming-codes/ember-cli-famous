@@ -1,4 +1,5 @@
 import Ember from 'ember';
+
 import Transitionable from 'famous/transitions/Transitionable';
 import Transform from 'famous/core/Transform';
 
@@ -50,7 +51,9 @@ export default Ember.Component.extend({
 
   makeTransition: function(transition) {
     if (!transition.famousTransition) {
-      return;
+      var msg = 'You must define a famousTransition property so the addon '
+      msg += 'knows which transition library to use.'
+      throw new Ember.Error(msg);
     }
 
     Transitionable.registerMethod(transition.method, transition.famousTransition);

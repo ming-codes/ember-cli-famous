@@ -31,7 +31,7 @@ export default FamousComponent.extend({
     }
 
     if (Ember.isArray(transitions)) {
-      Ember.A(transitions).forEach(function(transition) {
+      return Ember.A(transitions).forEach(function(transition) {
         this.makeTransition(transition);
       }, this);
     }
