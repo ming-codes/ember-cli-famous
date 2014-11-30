@@ -58,8 +58,6 @@ export default Ember.Component.extend({
 
     Transitionable.registerMethod(transition.method, transition.famousTransition);
 
-    var context = this.get('mainContext');
-
     var coords = transition.coordinates;
 
     this.get('modifier').setTransform(
