@@ -1,4 +1,6 @@
 import Ember from 'ember';
+import Transitionable from 'famous/transitions/Transitionable';
+import Transform from 'famous/core/Transform';
 
 export default Ember.Component.extend({
   mainContext: Ember.computed('parentView.mainContext', function() {
@@ -44,5 +46,21 @@ export default Ember.Component.extend({
   addToMainContext: function(renderableObject) {
     var newContext = this.get('mainContext').add(renderableObject);
     return this.set('mainContext', newContext);
+  },
+
+  makeTransition: function(transition) {
+    if (!transition.famousTransition) {
+      return;
+    }
+
+    Transitionable.registerMethod(transition.method, transition.famousTransition);
+
+    var context = this.get('mainContext');
+
+    var coords = transition.coordinates;
+
+    this.get('modifier').setTransform(
+      Transform.translate(coords.x, coords.y, coords.z), transition
+    );
   }
 });
