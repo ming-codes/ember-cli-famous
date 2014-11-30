@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   mainContext: Ember.computed('parentView.mainContext', function() {
     function tryParentContext(parent) {
-      var parentContext = parent.get('mainContext')
+      var parentContext = parent.get('mainContext');
 
       if (parentContext) {
         return parentContext;
