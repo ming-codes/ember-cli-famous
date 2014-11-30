@@ -36,7 +36,7 @@ export default FamousComponent.extend({
       }, this);
     }
 
-    this.makeTransition(transitions);
+    return this.makeTransition(transitions);
   }
 
 });

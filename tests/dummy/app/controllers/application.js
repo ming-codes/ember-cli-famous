@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import SpringTransition from 'famous/transitions/SpringTransition';
 import TweenTransition from 'famous/transitions/TweenTransition';
+import WallTransition from 'famous/transitions/WallTransition';
 
 export default Ember.Controller.extend({
   dependentKeys: ['text', 'colors.[]'],
@@ -49,12 +50,25 @@ export default Ember.Controller.extend({
     }
   },
 
+  thirdTransition: {
+    famousTransition: WallTransition,
+    method: 'wall',
+    dampingRatio: 0.2,
+    period: 800,
+    coordinates: {
+      x: 500,
+      y: -200,
+      z: 0
+    }
+  },
+
   chainedTransitions: function() {
     return [
-      this.get('anotherTransition'),
-      this.get('transition')
+      this.get('thirdTransition'),
+      this.get('transition'),
+      this.get('anotherTransition')
     ];
-  }.property(),
+  }.property('anotherTransition', 'transition', 'thirdTransition'),
 
   surface2Options: {
     size: [75, 75],
