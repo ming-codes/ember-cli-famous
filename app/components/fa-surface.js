@@ -3,6 +3,9 @@ import Surface from 'famous/core/Surface';
 import FamousComponent from './famous';
 
 export default FamousComponent.extend({
+
+  surface: null,
+
   hideContent: Ember.on('didInsertElement', function() {
     this.$().css('display', 'none');
   }),
@@ -22,4 +25,5 @@ export default FamousComponent.extend({
   famousRerender: function() {
     this.get('surface').setContent(this.$().html());
   }
+
 });

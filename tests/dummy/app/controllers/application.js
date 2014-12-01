@@ -8,6 +8,8 @@ export default Ember.Controller.extend({
 
   text: 'I\'m a surface',
 
+  surface2: null,
+
   modifierOptions: {
     opacity: 0.5
   },
@@ -81,6 +83,22 @@ export default Ember.Controller.extend({
   colors: [
     'green', 'red'
   ],
+
+  // If you assing a property to the surface key on the fa-surface componenent,
+  // you can get the actual Famous Surface bound to that property. This is
+  // useful if you need to work directy with the surface, for example, for
+  // events.
+  // The following function will run when the Surface gets bound to the surface2
+  // property in order to add an event handler to the Surface itself.
+  surface2Events: Ember.observer('surface2', function() {
+    var surface = this.get('surface2');
+    surface.on('click', function() {
+      this.setContent('I haz clicked!');
+      this.setProperties({
+        backgroundColor: 'blue'
+      });
+    });
+  }),
 
   actions: {
     deleteColor: function(color) {
