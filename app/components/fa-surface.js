@@ -1,10 +1,10 @@
 import Ember from 'ember';
 import Surface from 'famous/core/Surface';
 import FamousComponent from './famous';
+import computedLookupById from 'ember-cli-famous/utils/computed-lookup-by-id';
 
 export default FamousComponent.extend({
-
-  surface: null,
+  surface: computedLookupById('surface'),
 
   hideContent: Ember.on('didInsertElement', function() {
     this.$().css('display', 'none');
@@ -17,13 +17,12 @@ export default FamousComponent.extend({
     }, this.get('options'));
 
     var surface = new Surface(options);
+    this.registerWithId('surface', surface);
 
-    this.set('surface', surface);
     this.addToMainContext(surface);
   }),
 
   famousRerender: function() {
     this.get('surface').setContent(this.$().html());
   }
-
 });

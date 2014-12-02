@@ -6,7 +6,8 @@ import Transitionable from 'famous/transitions/Transitionable';
 import Transform from 'famous/core/Transform';
 
 export default Ember.Component.extend({
-  mainContext: findComponentProperty('mainContext', 'Are you within an #fa-app component?'),
+  mainContext:  findComponentProperty('mainContext', 'Are you within an #fa-app component?'),
+  faContainer:  findComponentProperty('faContainer', 'Are you within an #fa-app component?'),
 
   famousRerender: function() {
     throw new Ember.Error('You must implement the famousRerender method when passing in the watcher property.');
@@ -47,5 +48,17 @@ export default Ember.Component.extend({
     this.get('modifier').setTransform(
       Transform.translate(coords.x, coords.y, coords.z), transition
     );
+  },
+
+  register: function(fullName, faInstance) {
+    return this.get('faContainer').register(fullName, faInstance);
+  },
+
+  lookup: function(fullName) {
+    return this.get('faContainer').lookup(fullName);
+  },
+
+  registerWithId: function(type, faInstance) {
+    this.register(type + ':' + this.get('elementId'), faInstance);
   }
 });
