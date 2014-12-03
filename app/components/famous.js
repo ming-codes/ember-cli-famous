@@ -1,28 +1,13 @@
 import Ember from 'ember';
 
+import findComponentProperty from 'ember-cli-famous/utils/find-component-property';
+
 import Transitionable from 'famous/transitions/Transitionable';
 import Transform from 'famous/core/Transform';
 
 export default Ember.Component.extend({
-  mainContext: Ember.computed('parentView.mainContext', function() {
-    function tryParentContext(parent) {
-      var parentContext = parent.get('mainContext');
-
-      if (parentContext) {
-        return parentContext;
-      }
-
-      var parentsParent = parent.get('parentView');
-
-      if (parentsParent) {
-        return tryParentContext(parentsParent);
-      }
-
-      throw new Ember.Error('Could not find parent context to return. Are you within an #fa-app component?');
-    }
-
-    return tryParentContext(this.get('parentView'));
-  }),
+  mainContext:  findComponentProperty('mainContext', 'Are you within an #fa-app component?'),
+  faContainer:  findComponentProperty('faContainer', 'Are you within an #fa-app component?'),
 
   famousRerender: function() {
     throw new Ember.Error('You must implement the famousRerender method when passing in the watcher property.');
@@ -63,5 +48,17 @@ export default Ember.Component.extend({
     this.get('modifier').setTransform(
       Transform.translate(coords.x, coords.y, coords.z), transition
     );
+  },
+
+  register: function(fullName, faInstance) {
+    return this.get('faContainer').register(fullName, faInstance);
+  },
+
+  lookup: function(fullName) {
+    return this.get('faContainer').lookup(fullName);
+  },
+
+  registerWithId: function(type, faInstance) {
+    this.register(type + ':' + this.get('elementId'), faInstance);
   }
 });

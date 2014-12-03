@@ -1,11 +1,12 @@
 import Ember from 'ember';
 import Modifier from 'famous/core/Modifier';
 import FamousComponent from './famous';
+import computedLookupById from 'ember-cli-famous/utils/computed-lookup-by-id';
 
 export default FamousComponent.extend({
   options: Ember.Object.create(),
 
-  modifier: null,
+  modifier: computedLookupById('modifier'),
 
   transitions: null,
 
@@ -13,10 +14,9 @@ export default FamousComponent.extend({
     Ember.debug('fa-modifier: renderModifier');
 
     var modifier = new Modifier(this.get('options'));
-    this.set('modifier', modifier);
+    this.registerWithId('modifier', modifier);
 
     this.addTransitionsIfAny(modifier);
-
     this.addToMainContext(modifier);
   }),
 
@@ -38,5 +38,4 @@ export default FamousComponent.extend({
 
     return this.makeTransition(transitions);
   }
-
 });

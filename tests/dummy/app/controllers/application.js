@@ -2,8 +2,13 @@ import Ember from 'ember';
 import SpringTransition from 'famous/transitions/SpringTransition';
 import TweenTransition from 'famous/transitions/TweenTransition';
 import WallTransition from 'famous/transitions/WallTransition';
+import Container from 'ember-cli-famous/container';
 
 export default Ember.Controller.extend({
+  faContainer: Container.create(),
+
+  containerKeys: Ember.computed.alias('faContainer.keys'),
+
   dependentKeys: ['text', 'colors.[]'],
 
   text: 'I\'m a surface',

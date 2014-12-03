@@ -1,62 +1,87 @@
-<h2 id='title'>Welcome to ember-cli-famous</h2>
+<h2>Welcome to ember-cli-famous</h2>
 
-<h4>Set Title of first surface</h4>
-{{input value=text}}
+<div class="half left">
+  <h2>Surface Example</h2>
+  {{input value=text}}
 
-{{#fa-app}}
-  {{#fa-modifier transitions=transition}}
-    {{#fa-surface options=surfaceOptions}}
-      {{#fa-template bindContext=controller dependentKeys=controller.dependentKeys}}
-        <h1>{{text}}</h1>
+  {{#fa-app faContainer=faContainer}}
+    {{#fa-modifier transitions=transition}}
+      {{#fa-surface options=surfaceOptions id="randomid"}}
+        {{#fa-template bindContext=controller dependentKeys=controller.dependentKeys}}
+          <h1>{{text}}</h1>
 
-        <ul>
-          {{#each color in colors}}
+          <ul>
+            {{#each color in colors}}
             <li>
               {{color}}
               <button {{action 'deleteColor' color}}>
                 delete
               </button>
             </li>
-          {{else}}
+            {{else}}
             <li>
               No colors anymore. <button {{action 'resetColors'}}>reset</button>
             </li>
-          {{/each}}
+            {{/each}}
 
-          <h4>Add colors</h4>
-          {{fa-input value=newColor}}
-          <button {{action 'addColor'}}>Add color</button>
-        </ul>
-      {{/fa-template}}
-    {{/fa-surface}}
-  {{/fa-modifier}}
+            <h4>Add colors</h4>
+            {{fa-input value=newColor}}
+            <button {{action 'addColor'}}>Add color</button>
+          </ul>
+        {{/fa-template}}
+      {{/fa-surface}}
+    {{/fa-modifier}}
 
-  {{#fa-modifier options=modifierOptions transitions=chainedTransitions}}
-    {{#fa-surface options=surface2Options surface=surface2}}
-      Surface2
-    {{/fa-surface}}
-  {{/fa-modifier}}
+    {{#fa-modifier options=modifierOptions transitions=chainedTransitions}}
+      {{#fa-surface options=surface2Options surface=surface2}}
+        Surface2
+      {{/fa-surface}}
+    {{/fa-modifier}}
+  {{/fa-app}}
+</div>
 
-{{/fa-app}}
-
-<h3>Non surface example to compare functionality</h3>
-<div>
-  {{#each color in colors}}
+<div class="half left">
+  <h2>Non-Surface Example to compare functionality</h2>
+  <div>
+    {{#each color in colors}}
     <li>
-      {{color}}
-      <button {{action 'deleteColor' color}}>
-        delete
-      </button>
+    {{color}}
+    <button {{action 'deleteColor' color}}>
+      delete
+    </button>
     </li>
-  {{else}}
+    {{else}}
     <li>
-      No colors anymore. <button {{action 'resetColors'}}>reset</button>
+    No colors anymore. <button {{action 'resetColors'}}>reset</button>
     </li>
-  {{/each}}
+    {{/each}}
 
-  <h4>Add colors</h4>
-  {{input value=newColor}}
-  <button {{action 'addColor'}}>Add color</button>
+    <h4>Add colors</h4>
+    {{input value=newColor}}
+    <button {{action 'addColor'}}>Add color</button>
+  </div>
+</div>
+
+<div class="clear"></div>
+
+<div class="half">
+  <h2> Famous Container </h2>
+  <p>
+  This is an internal representation of the famous objects that have been
+  initialized. It can be used to have direct access to the famous objects
+  initialized by the compontents.
+  </p>
+  <ul>
+    {{#each key in controller.containerKeys}}
+    <li>
+    {{key}}
+    </li>
+    {{else}}
+    <li>
+    nothing in container
+    </li>
+    {{/each}}
+  </ul>
 </div>
 
 {{outlet}}
