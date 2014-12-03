@@ -1,46 +1,38 @@
-# Ember-cli-famous
+# ember-cli-famous
 
-We are just beginning development of this so it's not near usable yet. Consider
-this entirely experimental. We'll start releasing versions once we get it into
-a usable state.
+The goal of this project is to make developing ember apps using famous easier.
+Currently we provide famous to be imported and used. We are working on creating
+a collection of components similar to
+[famous-angular](https://github.com/Famous/famous-angular) to make it even
+easier to use.
 
 ## Installation
 
-* `git clone` this repository
-* `npm install`
-* `bower install`
+* `npm install --save-dev ember-cli-famous`
+* `ember generate ember-cli-famous`
 
-## Running
+## Usage
 
-* `ember server`
-* Visit your app at http://localhost:4200.
+In your app you can import the famous library wherever you want to use it:
 
-## Running Tests
-
-* `ember test`
-* `ember test --server`
-
-## Building
-
-* `ember build`
-
-For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
-
-## Gh Pages
-
-Build new gh-pages version
-```
-ember build --environment=production
-git checkout gh-pages
-cp -R dist/* .
-git add .
-git commit
-git push
+```js
+import Surface from 'famous/core/Surface';
+// Then use famous directly. Likely this will be in your components.
 ```
 
-## Development Resources
+# In Progress 
 
-Sources we're referencing when developing
+Everything below here is in development and not released on npm yet. It's mainly
+the various components we are adding.
+
+## Examples
+
+Currently our only examples are within the `tests/dummy/app` directory. They can
+also be found at our [gh-pages](http://poetic.github.io/ember-cli-famous/) site.
+
+## Project Development Resources
+
+Sources we're referencing when developing this addon
 
 * [s4dc/hafem](https://github.com/s4dc/hafem)
 * [Famous/famous-angular](https://github.com/Famous/famous-angular)
